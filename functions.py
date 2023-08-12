@@ -27,8 +27,8 @@ def add_change (request, name, phone):  #ValueError - name or/and phone not prov
         raise ValueError
 
 #show the phone of user
-def phone (notused1, name1, notused2):  #KeyError - name is incorrect or missing  
-    return(f"{name1}'s number is {phone_book[name1]}")
+def phone (notused1, name, notused2):  #KeyError - name is incorrect or missing  
+    return(f"{name}'s number is {phone_book[name]}")
 
 #show all name-phone pairs
 def show_all(notused1, notused2, notused3): #IndexError - no contacts added
