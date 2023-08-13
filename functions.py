@@ -1,5 +1,5 @@
 from error_handl_decorator import error_handling_decorator
-from error_handl_decorator import custom_error
+from error_handl_decorator import CustomError
 from re import findall
 
 
@@ -26,14 +26,14 @@ def add_change (request, name, phone):  #ValueError - name or/and phone not prov
         elif request.startswith("change"):
             return("new contact successfuly changed")
     else:
-        raise custom_error("please provide name and phone number divided by space")
+        raise CustomError("please provide name and phone number divided by space")
 
 #show the phone of user
 def phone (notused1, name, notused2):  #KeyError - name is incorrect or missing  
     for el in phone_book.keys():
         if name == el:
             return(f"{name}'s number is {phone_book[name]}")
-    raise custom_error("please provide valid name")
+    raise CustomError("please provide valid name")
 
 #show all name-phone pairs
 def show_all(notused1, notused2, notused3): #IndexError - no contacts added
@@ -43,7 +43,7 @@ def show_all(notused1, notused2, notused3): #IndexError - no contacts added
     if contacts:
         return '; '.join(contacts)
     else:
-        raise custom_error("phone book is empty")
+        raise CustomError("phone book is empty")
 
 def hello(notused1, notused2, notused3):
     return("How can I help you?")

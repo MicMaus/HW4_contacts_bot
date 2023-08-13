@@ -1,4 +1,4 @@
-class custom_error(Exception):
+class CustomError(Exception):
     def __init__(self, message):
         self.message = message
         super().__init__(self.message)
@@ -7,6 +7,8 @@ def error_handling_decorator(func):
     def inner(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except custom_error as ce:
+        except CustomError as ce:
             return str(ce)
+        except Exception as not_handled:
+            return f'error {type(not_handled)=} occured, please try again'
     return inner
